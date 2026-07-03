@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DinoController Web</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <main class="page-shell">
+      <div class="app-shell">
+        <section class="game-stage" aria-label="DinoController Web">
+          <div class="scorebar">
+            <div class="brand">
+              <img src="../src/logo.png" alt="" class="brand-logo">
+              <span>DinoController</span>
+            </div>
+            <div class="scores" aria-live="polite">
+              <span id="cameraStatus">CAM OFF</span>
+              <span id="highScore">HI 00000</span>
+              <span id="score">00000</span>
+            </div>
+          </div>
+          <canvas id="gameCanvas" width="1200" height="600"></canvas>
+          <div id="overlay" class="overlay">
+            <h1>D I N O  R U S H</h1>
+            <button id="primaryAction" class="primary-button" type="button">START</button>
+          </div>
+        </section>
+
+        <aside class="control-panel" aria-label="Controls">
+          <div class="toolbar">
+            <button id="restartButton" class="icon-button" type="button" title="Restart" aria-label="Restart">
+              <span aria-hidden="true">R</span>
+            </button>
+            <button id="cameraButton" class="icon-button" type="button" title="Camera" aria-label="Camera">
+              <span aria-hidden="true">C</span>
+            </button>
+            <button id="soundButton" class="icon-button" type="button" title="Sound" aria-label="Sound">
+              <span aria-hidden="true">S</span>
+            </button>
+          </div>
+
+          <div class="control-row">
+            <label for="controlMode">Mode</label>
+            <select id="controlMode">
+              <option value="mediapipe">MediaPipe</option>
+              <option value="mouth">Mouth</option>
+              <option value="body">Body</option>
+              <option value="keyboard">Keyboard</option>
+            </select>
+          </div>
+
+          <div class="control-row">
+            <label for="sensitivity">Sensitivity</label>
+            <input id="sensitivity" type="range" min="8" max="55" value="24">
+          </div>
+
+          <div class="control-row">
+            <label for="speedLevel">Speed</label>
+            <input id="speedLevel" type="range" min="1" max="5" value="3">
+          </div>
+
+          <div class="detector-readout" aria-live="polite">
+            <span id="detectorStatus">MODEL IDLE</span>
+            <span id="actionStatus">ACTION NONE</span>
+          </div>
+
+          <video id="cameraPreview" autoplay playsinline muted></video>
+        </aside>
+      </div>
+
+      <section class="guide-panel" aria-label="Game guide">
+        <div>
+          <h2>怎么玩</h2>
+          <p>躲开仙人掌和飞鸟，跑得越久分数越高。按 <strong>START</strong> 开始，最高分会保存在当前浏览器里。</p>
+        </div>
+        <div>
+          <h2>控制方式</h2>
+          <p>键盘：<strong>Space / ↑</strong> 跳跃，<strong>↓</strong> 下蹲。摄像头：点 <strong>C</strong> 打开动作识别，张嘴或身体跳起会跳跃，下蹲会让恐龙下蹲。</p>
+        </div>
+        <div>
+          <h2>按钮说明</h2>
+          <p><strong>R</strong> 重新开始，<strong>C</strong> 打开/关闭摄像头，<strong>S</strong> 打开/关闭声音。Mode 可切换 MediaPipe、Mouth、Body 或 Keyboard。</p>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
